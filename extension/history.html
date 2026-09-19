@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <title>Scan History — ScamShield AI</title>
+  <link rel="stylesheet" href="shared/theme.css" />
+  <link rel="stylesheet" href="history.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <header class="page-header">
+      <div class="page-header-brand">
+        <img src="icons/icon32.png" alt="" />
+        <h1>Scan History</h1>
+      </div>
+      <button class="ss-btn ss-btn-ghost" id="settingsNav">Settings →</button>
+    </header>
+
+    <div class="page-body">
+
+      <div class="hist-toolbar ss-glass">
+        <div class="hist-filters" id="filters">
+          <button class="hist-filter-btn active" data-filter="all">All</button>
+          <button class="hist-filter-btn" data-filter="url">URL</button>
+          <button class="hist-filter-btn" data-filter="email">Email</button>
+          <button class="hist-filter-btn" data-filter="screenshot">Login pages</button>
+          <button class="hist-filter-btn" data-filter="qr">QR codes</button>
+          <button class="hist-filter-btn" data-filter="danger">Threats only</button>
+        </div>
+        <button class="ss-btn ss-btn-danger" id="clearBtn">Clear history</button>
+      </div>
+
+      <div class="hist-summary">
+        <div class="hist-summary-card ss-glass">
+          <span class="hist-summary-num" id="totalCount">0</span>
+          <span class="hist-summary-label">Total scans</span>
+        </div>
+        <div class="hist-summary-card ss-glass danger">
+          <span class="hist-summary-num" id="dangerCount">0</span>
+          <span class="hist-summary-label">Threats detected</span>
+        </div>
+        <div class="hist-summary-card ss-glass safe">
+          <span class="hist-summary-num" id="safeCount">0</span>
+          <span class="hist-summary-label">Confirmed safe</span>
+        </div>
+      </div>
+
+      <div class="hist-list" id="histList">
+        <!-- populated by history.js -->
+      </div>
+
+      <div class="hist-empty" id="histEmpty" hidden>
+        <p>No scans yet. Browse normally — ScamShield AI will log activity here automatically.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="shared/api.js"></script>
+  <script src="history.js"></script>
+</body>
+</html>

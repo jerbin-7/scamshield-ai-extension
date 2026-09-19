@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <title>Warning — ScamShield AI</title>
+  <link rel="stylesheet" href="shared/theme.css" />
+  <link rel="stylesheet" href="warning.css" />
+</head>
+<body>
+  <div class="warn-scene">
+    <div class="warn-scanlines" aria-hidden="true"></div>
+
+    <div class="warn-card ss-glass">
+      <div class="warn-icon-wrap">
+        <svg viewBox="0 0 120 120" class="warn-icon-svg">
+          <circle cx="60" cy="60" r="52" class="warn-icon-ring" />
+          <g class="ss-scanring">
+            <circle cx="60" cy="60" r="58" fill="none" stroke="url(#dgrad)" stroke-width="1.4" stroke-dasharray="5 11" />
+          </g>
+          <defs>
+            <linearGradient id="dgrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#ff3b5c"/>
+              <stop offset="100%" stop-color="#ff7a3d"/>
+            </linearGradient>
+          </defs>
+          <text x="60" y="72" text-anchor="middle" class="warn-icon-glyph">!</text>
+        </svg>
+      </div>
+
+      <div class="ss-badge ss-badge-danger warn-badge"><span class="ss-dot"></span>Dangerous website blocked</div>
+
+      <h1 class="warn-title">This site was flagged as likely phishing</h1>
+      <p class="warn-target" id="targetUrl">—</p>
+
+      <div class="warn-score-row">
+        <div class="warn-score-box">
+          <span class="warn-score-num" id="scoreNum">--</span>
+          <span class="warn-score-pct">%</span>
+        </div>
+        <span class="warn-score-label">Risk score, higher means more dangerous</span>
+      </div>
+
+      <div class="warn-reasons">
+        <div class="ss-panel-title">Why ScamShield AI flagged this page</div>
+        <ul id="reasonsList" class="warn-reasons-list"></ul>
+      </div>
+
+      <div class="warn-actions">
+        <button class="ss-btn ss-btn-primary warn-leave" id="leaveBtn">← Leave this website</button>
+        <button class="ss-btn ss-btn-ghost warn-proceed" id="proceedBtn">Proceed anyway (not recommended)</button>
+      </div>
+
+      <p class="warn-footnote">
+        ScamShield AI blocks sites using a machine-learning model trained on phishing patterns.
+        No detector is perfect — use your own judgment before entering credentials or payment details.
+      </p>
+    </div>
+  </div>
+
+  <script src="shared/api.js"></script>
+  <script src="warning.js"></script>
+</body>
+</html>

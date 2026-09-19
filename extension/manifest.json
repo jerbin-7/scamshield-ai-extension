@@ -1,0 +1,66 @@
+{
+  "manifest_version": 3,
+  "name": "ScamShield AI - Phishing & Scam Protection",
+  "version": "1.0.0",
+  "description": "Real-time AI protection against phishing sites, fake login pages, malicious QR codes, and scam emails.",
+  
+
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    },
+    "default_title": "ScamShield AI"
+  },
+
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["lib/jsQR.js", "content.js"],
+      "css": ["shared/theme.css", "content.css"],
+      "run_at": "document_idle"
+    }
+  ],
+
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "scripting",
+    "storage",
+    "notifications",
+    "webNavigation"
+  ],
+
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*",
+    "http://localhost:5000/*",
+    "http://127.0.0.1:5000/*"
+  ],
+
+  "web_accessible_resources": [
+    {
+      "resources": ["warning.html", "warning.js", "warning.css", "shared/theme.css", "icons/*"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  }
+}

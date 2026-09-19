@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <title>Settings — ScamShield AI</title>
+  <link rel="stylesheet" href="shared/theme.css" />
+  <link rel="stylesheet" href="history.css" />
+  <link rel="stylesheet" href="settings.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <header class="page-header">
+      <div class="page-header-brand">
+        <img src="icons/icon32.png" alt="" />
+        <h1>Settings</h1>
+      </div>
+      <button class="ss-btn ss-btn-ghost" id="historyNav">History →</button>
+    </header>
+
+    <div class="page-body">
+
+      <section class="settings-card ss-glass">
+        <div class="ss-panel-title">Protection modules</div>
+
+        <div class="settings-row">
+          <div>
+            <div class="settings-row-title">URL Detection</div>
+            <div class="settings-row-desc">Scan every page you visit for phishing indicators in real time.</div>
+          </div>
+          <label class="ss-switch"><input type="checkbox" id="urlDetection" /><span class="ss-slider"></span></label>
+        </div>
+
+        <div class="settings-row">
+          <div>
+            <div class="settings-row-title">QR Code Detection</div>
+            <div class="settings-row-desc">Automatically decode and check QR codes rendered on web pages.</div>
+          </div>
+          <label class="ss-switch"><input type="checkbox" id="qrDetection" /><span class="ss-slider"></span></label>
+        </div>
+
+        <div class="settings-row">
+          <div>
+            <div class="settings-row-title">Email Detection</div>
+            <div class="settings-row-desc">Adds an "Analyze Email" button inside Gmail.</div>
+          </div>
+          <label class="ss-switch"><input type="checkbox" id="emailDetection" /><span class="ss-slider"></span></label>
+        </div>
+
+        <div class="settings-row">
+          <div>
+            <div class="settings-row-title">Screenshot Detection</div>
+            <div class="settings-row-desc">Offer a CNN-based check for fake login pages using a screenshot (asks permission each time).</div>
+          </div>
+          <label class="ss-switch"><input type="checkbox" id="screenshotDetection" /><span class="ss-slider"></span></label>
+        </div>
+      </section>
+
+      <section class="settings-card ss-glass">
+        <div class="ss-panel-title">Alerts & appearance</div>
+
+        <div class="settings-row">
+          <div>
+            <div class="settings-row-title">Browser notifications</div>
+            <div class="settings-row-desc">Show a system notification when a dangerous site is detected.</div>
+          </div>
+          <label class="ss-switch"><input type="checkbox" id="notifications" /><span class="ss-slider"></span></label>
+        </div>
+
+        <div class="settings-row">
+          <div>
+            <div class="settings-row-title">Auto-block warning page</div>
+            <div class="settings-row-desc">Automatically redirect to the ScamShield warning page on high-risk sites.</div>
+          </div>
+          <label class="ss-switch"><input type="checkbox" id="autoWarningPage" /><span class="ss-slider"></span></label>
+        </div>
+
+        <div class="settings-row">
+          <div>
+            <div class="settings-row-title">Dark mode</div>
+            <div class="settings-row-desc">Toggle the extension's theme across all pages.</div>
+          </div>
+          <label class="ss-switch"><input type="checkbox" id="darkMode" /><span class="ss-slider"></span></label>
+        </div>
+      </section>
+
+      <section class="settings-card ss-glass">
+        <div class="ss-panel-title">Backend connection</div>
+        <div class="settings-row-desc" style="margin-bottom: 10px;">
+          Point the extension at your Flask/FastAPI ScamShield backend. Defaults to a local dev server.
+        </div>
+        <div class="settings-api-row">
+          <input type="text" id="apiBaseUrl" class="settings-input" placeholder="http://127.0.0.1:5000" />
+          <button class="ss-btn ss-btn-ghost" id="testConnBtn">Test connection</button>
+        </div>
+        <div id="connStatus" class="settings-conn-status"></div>
+      </section>
+
+      <section class="settings-card ss-glass danger-zone">
+        <div class="ss-panel-title">Data</div>
+        <div class="settings-row">
+          <div>
+            <div class="settings-row-title">Clear scan history</div>
+            <div class="settings-row-desc">Removes all locally stored scan records. Settings are kept.</div>
+          </div>
+          <button class="ss-btn ss-btn-danger" id="clearHistoryBtn">Clear</button>
+        </div>
+        <div class="settings-row">
+          <div>
+            <div class="settings-row-title">Reset trusted sites</div>
+            <div class="settings-row-desc">Clears sites you've manually marked as trusted.</div>
+          </div>
+          <button class="ss-btn ss-btn-ghost" id="clearAllowlistBtn">Reset</button>
+        </div>
+      </section>
+
+      <div class="settings-saved" id="savedIndicator">Settings saved ✓</div>
+
+    </div>
+  </div>
+
+  <script src="shared/api.js"></script>
+  <script src="settings.js"></script>
+</body>
+</html>

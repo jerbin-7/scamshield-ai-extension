@@ -1,0 +1,128 @@
+/* Injected into every page. Namespaced with ss- to avoid clobbering host styles. */
+
+#scamshield-toast-root {
+  all: initial;
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 2147483647;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+.ss-toast {
+  all: initial;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  width: 320px;
+  padding: 14px;
+  border-radius: 14px;
+  background: rgba(18, 26, 46, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(123, 97, 255, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+  font-family: "Inter", "Segoe UI", sans-serif;
+  color: #e8edf7;
+  animation: ss-toast-in 0.25s ease;
+  box-sizing: border-box;
+}
+
+@keyframes ss-toast-in {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.ss-toast-safe { border-color: rgba(0, 255, 163, 0.45); box-shadow: 0 0 24px rgba(0, 255, 163, 0.18), 0 10px 30px rgba(0,0,0,0.45); }
+.ss-toast-danger { border-color: rgba(255, 59, 92, 0.5); box-shadow: 0 0 24px rgba(255, 59, 92, 0.22), 0 10px 30px rgba(0,0,0,0.45); }
+
+.ss-toast-icon {
+  font-size: 18px;
+  line-height: 1;
+  flex-shrink: 0;
+  width: 28px; height: 28px;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(0, 229, 255, 0.12);
+}
+.ss-toast-danger .ss-toast-icon { background: rgba(255, 59, 92, 0.16); }
+.ss-toast-safe .ss-toast-icon { background: rgba(0, 255, 163, 0.16); }
+
+.ss-toast-body { flex: 1; min-width: 0; }
+.ss-toast-title {
+  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  margin-bottom: 4px;
+  color: #ffffff;
+}
+.ss-toast-message {
+  font-size: 12px;
+  line-height: 1.45;
+  color: #b6c0dc;
+  word-break: break-word;
+}
+.ss-toast-actions { display: flex; gap: 8px; margin-top: 10px; }
+.ss-toast-btn {
+  all: initial;
+  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 7px;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+.ss-toast-btn-primary { background: linear-gradient(135deg,#00e5ff,#7b61ff); color: #06111f; }
+.ss-toast-btn-ghost { background: rgba(255,255,255,0.06); color: #b6c0dc; border: 1px solid rgba(255,255,255,0.12); }
+
+.ss-toast-close {
+  all: initial;
+  cursor: pointer;
+  color: #7a88a6;
+  font-size: 16px;
+  line-height: 1;
+  padding: 2px 4px;
+}
+.ss-toast-close:hover { color: #e8edf7; }
+
+/* QR marker overlay */
+.ss-qr-marker {
+  position: absolute;
+  border-radius: 10px;
+  pointer-events: none;
+  z-index: 2147483646;
+  border: 2.5px solid;
+  box-sizing: border-box;
+}
+.ss-qr-marker-safe { border-color: #00ffa3; box-shadow: 0 0 12px rgba(0,255,163,0.5); }
+.ss-qr-marker-danger { border-color: #ff3b5c; box-shadow: 0 0 12px rgba(255,59,92,0.55); animation: ss-pulse 1.2s ease-in-out infinite; }
+
+@keyframes ss-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.55; }
+}
+
+/* Gmail toolbar button */
+.ss-gmail-btn {
+  all: initial;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: #06111f;
+  background: linear-gradient(135deg, #00e5ff, #7b61ff);
+  padding: 7px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  margin-left: 8px;
+  box-shadow: 0 0 14px rgba(0, 229, 255, 0.3);
+  vertical-align: middle;
+}
+.ss-gmail-btn:hover { filter: brightness(1.08); }
+.ss-gmail-btn-icon { font-size: 13px; }
